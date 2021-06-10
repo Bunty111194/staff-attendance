@@ -1,0 +1,92 @@
+<div class="container">
+    <h2 class="mt-3">Employee</h2>
+    
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+            <div class="card mt-4">
+                <div class="card-header">
+                    Employee details
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="name">Employee Name:</label>
+                            <input type="text" #empName (ngModel)="empName" name="empName" id="empName" class="form-control " placeholder="Employee Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">Employee Shift:</label>
+                            <input type="text" #shift (ngModel)="shift" name="shift" id="shift" class="form-control " placeholder="Employee Shift">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="name">Employee WorkType:</label>
+                            <input type="text" #workType (ngModel)="workType" name="workType" id="workType" class="form-control " placeholder="Employee WorkType">
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Register" class="btn btn-primary pl-4 pr-4">
+                </div>
+            </div>
+        </form>
+    
+    <div class="mt-5">
+        <div class="table-responsive">
+
+        
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Employee Id</th>
+                    <th>Employee Name</th>
+                    <th>Employee WorkType</th>
+                    <th>Employee Shift</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead> 
+            
+            <tbody class="tbody">
+            <tr *ngFor="let employee of employeeDetails">
+               <td>{{employee.employeeId}}</td>
+               <td>{{employee.empName}}</td>
+               <td>{{employee.workType}}</td>
+               <td>{{employee.shift}}</td>
+               <td> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="edit(employee)">Edit</button></td>
+               <td> <button type="button" class="btn btn-danger" (click)="deleteemployee(employee)">Delete</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" data-bs-toggle="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Update Employee</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form #updateForm="ngForm" (ngSubmit)="updateemployee()">
+               
+                <div class="form-group ">
+                    <label for="name">Employee Name:</label>
+                    <input type="text" #empName [(ngModel)]="employeeToupdate.empName" name="empName" id="empName" class="form-control " placeholder="Employee Name">
+                </div>
+                <div class="form-group ">
+                   <label for="name">Employee Shift:</label>
+                   <input type="text" #shift [(ngModel)]="employeeToupdate.shift" name="shift" id="shift" class="form-control " placeholder="Employee Shift">
+               </div>
+               <div class="form-group ">
+                   <label for="name">Employee WorkType:</label>
+                   <input type="text" #workType [(ngModel)]="employeeToupdate.workType" name="workType" id="workType" class="form-control " placeholder="Employee WorkType">
+               </div>
+               <div class="form-group ">
+                  <input type="submit" value="Register" class="btn btn-primary w-100">
+               </div>
+               </form>
+        </div>
+       
+      </div>
+    </div>
+  </div>

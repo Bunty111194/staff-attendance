@@ -1,0 +1,19 @@
+
+<div class="container">
+  <form #registerForm="ngForm" (ngSubmit)="register(registerForm)" >
+    <div class="card mt-4">
+        
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="name">Employee id</label>
+                    <input type="text" #employeeId (ngModel)="employeeId"  name="employeeId" id="employeeId" class="form-control " placeholder="Employee id">
+                </div> 
+            </div>
+        </div>
+        <div class="card-footer">
+            <input type="submit" value="Check in" class="btn btn-primary pl-4 pr-4 mr-3 ">
+        </div>
+    </div>
+</form>
+</div>

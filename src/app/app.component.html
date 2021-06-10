@@ -1,0 +1,60 @@
+
+<div id="app">
+  <!-- Header --> 
+  <header class="main-header">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" [ngClass]="menuStatus ? 'menu-open' : ''">
+      <button class="navbar-toggler mr-3" type="button" (click)="menuOpen()" >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <a href="#" class="navbar-brand">TEAM-2</a>
+      
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto" routerLinkActive="active">
+          <li class="nav-item">
+            <a href="/home" class="nav-link" routerLink="home" routerLinkActive="active">Home </a>        
+          </li>
+          <li class="nav-item" *ngIf="showAdmin">
+            <a href="/admin" class="nav-link" routerLink="admin" routerLinkActive="active">Admin </a>
+          </li>
+          <li class="nav-item" *ngIf="showofficeboy">
+            <a href="/officeboy" class="nav-link" routerLink="mod" routerLinkActive="active">Officeboy</a>
+          </li>
+          <li class="nav-item">
+            <a href="/user" class="nav-link" *ngIf="isLoggedIn" routerLink="user" routerLinkActive="active">User information</a>
+          </li>
+          <li class="nav-item" *ngIf="showAdmin">
+            <a href="/employee" class="nav-link" *ngIf="isLoggedIn" routerLink="employee" routerLinkActive="active">Employee</a>
+          </li>
+          <li class="nav-item">
+            <a href="/mark-attendance" class="nav-link" *ngIf="isLoggedIn" routerLink="mark-attendance" routerLinkActive="active">Mark attendance</a>
+          </li>      
+          <li class="nav-item">
+            <a href="/calendar" class="nav-link" *ngIf="isLoggedIn" routerLink="mark-attendance" routerLinkActive="active">calender</a>
+          </li>
+          
+        </ul>
+      </div>
+      <!--  -->
+      <ul class="nav ml-auto" *ngIf="!isLoggedIn">     
+        <li class="nav-item">
+          <a href="/login" class="nav-link text-white" routerLink="login">Login</a>
+        </li>
+      </ul>
+      <!--  -->
+      <ul class="nav ml-auto" *ngIf="isLoggedIn">
+        <li class="nav-item">
+          <a href="/profile" class="nav-link text-white" routerLink="profile">{{ username }}</a>
+        </li>      
+        <li class="nav-item">
+          <a href class="nav-link text-white" (click)="logout()">Log out</a>
+        </li>
+      </ul>
+    </nav>
+  </header> 
+  
+  <!-- ./Header -->  
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
